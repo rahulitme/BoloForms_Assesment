@@ -1,19 +1,16 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
+  "buildCommand": "npm install",
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x",
+      "memory": 1024,
+      "maxDuration": 30
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "server.js"
-    }
-  ],
+  },
   "env": {
     "MONGODB_URI": "@mongodb_uri",
-    "FRONTEND_URL": "@frontend_url"
+    "FRONTEND_URL": "@frontend_url",
+    "NODE_ENV": "production"
   }
 }
